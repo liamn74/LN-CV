@@ -3,58 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Liam Nichols – CV</title>
-<meta name="description" content="Online CV: public administration, community partnerships and library governance.">
-<meta name="theme-color" content="#0b2a3c">
+<title>Liam Nichols</title>
+<meta name="description" content="Liam Nichols: grants, partnerships and public service.">
+<meta name="theme-color" content="#071f2e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..900&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 <style>
 /* ---------- Theme: edit these colours to restyle the whole site ---------- */
 :root{
-  --ink:#0b2a3c;      /* sidebar: deep navy-teal */
-  --accent:#12616f;   /* headings, links, timeline */
-  --paper:#f6f9f9; --surface:#fff; --text:#16303d; --muted:#567480; --line:#cfdfe2;
-  --serif:"Newsreader",Georgia,serif; --sans:"Instrument Sans",system-ui,sans-serif;
+  --navy:#071f2e; --ink:#0b2a3c; --teal:#12616f; --aqua:#6ee7d8;   /* aqua = buttons and highlights */
+  --head:#0b2a3c; --accent:#12616f; --paper:#f4f8f8; --surface:#fff; --text:#14303c; --muted:#547380; --line:#d3e2e5;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif; --sans:"Instrument Sans",system-ui,sans-serif; --serif:"Newsreader",Georgia,serif;
 }
 @media (prefers-color-scheme:dark){
-  :root{--accent:#7cc9d1;--paper:#08171f;--surface:#0e2230;--text:#dbe9ec;--muted:#8fb0b9;--line:#1d3a47}
+  :root{--head:#fff;--accent:#7cc9d1;--paper:#08171f;--surface:#0e2230;--text:#dbe9ec;--muted:#8fb0b9;--line:#1d3a47}
 }
 *,::before,::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--text);font:400 1rem/1.65 var(--sans)}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{margin:0;background:var(--paper);color:var(--text);font:400 1.05rem/1.65 var(--sans)}
 a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-
-/* ---------- Layout ---------- */
-.layout{display:grid;grid-template-columns:minmax(300px,380px) 1fr;min-height:100vh}
-aside{position:sticky;top:0;height:100vh;padding:3.5rem 2.5rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:2rem;color:#e8f3f4;background:var(--ink);overflow:hidden;isolation:isolate}
-aside a{color:#bfe0e4}
-aside a:focus-visible{outline-color:#7cc9d1}
-h1{font:500 clamp(2.4rem,4vw,3.2rem)/1.05 var(--serif);letter-spacing:-.01em;margin:0 0 .9rem;color:#fff}
-.role{margin:0;font-size:1.05rem;color:#d3e9ec}
-.role+.role{color:#9cc3ca;margin-top:.15rem}
-#nav{display:flex;flex-direction:column;gap:.1rem;margin-bottom:1.5rem}
-#nav a{display:flex;align-items:center;padding:.25rem 0;color:#9cc3ca;text-decoration:none;transition:color .2s}
-#nav a::before{content:"";width:0;height:1px;background:#7cc9d1;margin-right:0;transition:width .3s,margin .3s}
-#nav a:hover,#nav a.on{color:#fff}
-#nav a.on::before{width:1.5rem;margin-right:.65rem}
-.links{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.95rem}
-main{padding:4.5rem clamp(1.5rem,6vw,5rem) 3rem;max-width:62rem}
-section{padding-bottom:3.75rem;scroll-margin-top:2rem}
-h2{display:flex;align-items:center;gap:1rem;font:500 1.8rem/1.2 var(--serif);margin:0 0 1.5rem}
-h2::after{content:"";flex:1;height:1px;background:var(--line)}
-h3{font:600 1.05rem/1.35 var(--sans);margin:0}
+a:focus-visible,button:focus-visible{outline:2px solid var(--aqua);outline-offset:3px}
+h1,h2,.brand,.btn,.stat b,.pillars h3{font-family:var(--display);font-stretch:75%;font-weight:850;text-transform:uppercase}
 p{margin:0 0 1rem;max-width:65ch}
-.lead{font:400 1.3rem/1.55 var(--serif)}
-footer{color:var(--muted);font-size:.85rem}
+.wrap{width:min(1180px,100% - clamp(2.5rem,8vw,6rem));margin-inline:auto}
+.sec{padding:clamp(3.5rem,8vw,6.5rem) 0}
+.sec-pillars,.sec-articles{background:var(--surface)}
+h2{font-size:clamp(2.4rem,5.5vw,4.25rem);line-height:.95;color:var(--head);margin:0 0 2.25rem}
+h2::before{content:"";display:block;width:3.5rem;height:6px;background:var(--accent);margin-bottom:1.1rem}
+h3{font:700 1.1rem/1.35 var(--sans);margin:0}
 
-/* ---------- Contour lines (the one decorative moment) ---------- */
-#contours{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
-#contours path{fill:none;stroke:#5fb7c2;stroke-opacity:.3;stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s cubic-bezier(.3,.6,.2,1) forwards;animation-delay:calc(var(--i)*.12s)}
-#contours g{animation:sway 20s ease-in-out infinite alternate}
+/* ---------- Top bar ---------- */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:1.5rem;padding:.75rem clamp(1.25rem,4vw,3rem);background:rgba(7,31,46,.93);backdrop-filter:blur(10px);color:#fff}
+.brand{font-size:1.4rem;line-height:1;color:#fff;text-decoration:none;letter-spacing:.01em;margin-right:auto}
+#nav{display:flex;gap:1.75rem}
+#nav a{color:#bcd7dc;text-decoration:none;font-weight:500;font-size:.95rem;padding:.3rem 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+#nav a:hover{color:#fff}
+#nav a.on{color:#fff;border-color:var(--aqua)}
+.top-r{display:flex;align-items:center;gap:.75rem}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:4px;padding:.45rem .8rem;font:600 .9rem var(--sans)}
+.btn{display:inline-block;background:var(--aqua);color:var(--navy);font-size:1rem;font-stretch:90%;letter-spacing:.04em;line-height:1;padding:.95rem 1.5rem;border-radius:4px;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.top .btn{padding:.7rem 1.1rem;font-size:.9rem}
+.btn.ghost{background:none;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:min(88svh,58rem);padding:5rem 0;background:var(--navy);color:#fff}
+.hero .wrap{position:relative;z-index:2}
+.tag{display:inline-block;margin-bottom:1.5rem;padding:.3rem .9rem;border:1px solid rgba(110,231,216,.55);border-radius:99px;color:var(--aqua);font-weight:600;font-size:.92rem}
+.hero h1{font-size:clamp(3.2rem,8vw,7rem);line-height:.9;max-width:12ch;margin:0 0 1.5rem;color:#fff}
+.sub{max-width:32rem;font-size:clamp(1.1rem,1.7vw,1.35rem);line-height:1.5;color:#cfe6e9;margin-bottom:2.25rem}
+.hero-btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero-photo{position:absolute;top:0;right:0;bottom:0;width:56%;z-index:1;-webkit-mask-image:linear-gradient(to right,transparent,#000 42%);mask-image:linear-gradient(to right,transparent,#000 42%)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+#contours{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+#contours path{fill:none;stroke:#5fb7c2;stroke-opacity:.22;stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.8s cubic-bezier(.3,.6,.2,1) forwards;animation-delay:calc(var(--i)*.12s)}
+#contours g{animation:sway 22s ease-in-out infinite alternate}
 @keyframes draw{to{stroke-dashoffset:0}}
-@keyframes sway{to{transform:translateY(-16px)}}
+@keyframes sway{to{transform:translateY(-18px)}}
+
+/* ---------- Images (a missing file shows a labelled placeholder) ---------- */
+.pic{position:relative;margin:0;overflow:hidden;border-radius:6px;aspect-ratio:4/5;background:linear-gradient(135deg,var(--teal),var(--navy))}
+.pic.wide{aspect-ratio:16/9;border-radius:0}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.pic figcaption{display:none}
+.pic.ph{display:grid;place-items:center}
+.pic.ph figcaption{display:block;padding:1rem;color:rgba(255,255,255,.7);font-size:.85rem;text-align:center}
+.split{display:grid;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.split:has(>figure){grid-template-columns:minmax(0,4fr) minmax(0,5fr)}
+.lead{font:italic 400 clamp(1.35rem,2.4vw,1.85rem)/1.4 var(--serif);color:var(--text)}
+
+/* ---------- Module: stats ---------- */
+.sec-stats{background:var(--teal);color:#fff;padding:0}
+.stats{display:grid;grid-template-columns:repeat(var(--n,3),1fr)}
+.stat{padding:2.5rem 1.5rem;border-left:1px solid rgba(255,255,255,.25)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{display:block;font-size:clamp(3rem,7vw,6rem);line-height:.9;color:var(--aqua);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:.7rem;color:#e1f2f4;font-weight:500;line-height:1.4;max-width:22ch}
+
+/* ---------- Module: pillars ---------- */
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2.5rem}
+.pillars article{border-top:6px solid var(--accent);padding-top:1.25rem}
+.pillars h3{font-size:2rem;line-height:1;color:var(--head);margin-bottom:.8rem}
+.pillars p{margin:0}
+
+/* ---------- Module: quote ---------- */
+.sec-quote{position:relative;isolation:isolate;background:var(--ink) center/cover no-repeat;color:#fff;padding:clamp(5rem,12vw,9rem) 0}
+.sec-quote::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,31,46,.93),rgba(7,31,46,.55))}
+blockquote{margin:0;max-width:20em;font:italic 400 clamp(1.9rem,4.4vw,3.5rem)/1.2 var(--serif)}
+cite{display:block;margin-top:1.5rem;font:600 1rem var(--sans);font-style:normal;color:var(--aqua)}
 
 /* ---------- Module: timeline ---------- */
 .tl{position:relative}
@@ -71,85 +109,63 @@ footer{color:var(--muted);font-size:.85rem}
 ul.b{margin:0;padding-left:1.1rem;max-width:65ch}
 ul.b li{margin-bottom:.3rem}
 ul.b li::marker{color:var(--accent)}
-
-/* ---------- Module: cards ---------- */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.25rem 1.35rem;transition:border-color .2s}
-.card:hover{border-color:var(--accent)}
-.card p{margin:0 0 .6rem}
-.card .org{margin:.1rem 0 .6rem}
-
-/* ---------- Module: list (publications, talks, awards) ---------- */
-.refs{list-style:none;margin:0;padding:0}
-.refs li{display:grid;grid-template-columns:4.5rem 1fr;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
-.refs li:first-child{padding-top:0}
-
-/* ---------- Module: tags (skills) ---------- */
-.tg{margin-bottom:1.25rem}
-.tg h3{margin-bottom:.5rem}
-.tags{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;margin:0;padding:0}
-.tags li{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:.15rem .8rem;font-size:.9rem}
-
-/* ---------- Headshot and buttons ---------- */
-.photo{width:104px;height:104px;margin-bottom:1.4rem;border-radius:50%;overflow:hidden;display:grid;place-items:center;box-shadow:0 0 0 2px var(--ink),0 0 0 3px rgba(124,201,209,.55)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo.empty{box-shadow:none;border:1.5px dashed rgba(124,201,209,.55);background:rgba(255,255,255,.06);font:500 1.9rem var(--serif);color:#bfe0e4}
-.btn{display:inline-block;padding:.55rem 1.2rem;border-radius:99px;font-weight:600;font-size:.95rem;text-decoration:none;background:#7cc9d1;color:var(--ink);transition:background .2s}
-.btn:hover{background:#a3dce2}
-.btn.alt{background:none;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
-.btn.alt:hover{background:rgba(255,255,255,.1)}
-.links{align-items:center}
-@media (min-width:901px) and (max-height:780px){
-  .photo{width:76px;height:76px;margin-bottom:1rem}
-  .photo.empty{font-size:1.5rem}
-  aside{padding-top:2.25rem;padding-bottom:1.75rem}
-  h1{font-size:2.4rem}
-}
-@media (max-width:900px){.photo{width:88px;height:88px}}
-
-/* ---------- Nested roles (several roles inside one organization) ---------- */
 .roles{list-style:none;margin:.5rem 0 .75rem;padding:0 0 0 1rem;border-left:2px solid var(--line)}
 .roles>li{padding:.3rem 0}
 .roles h4{font:600 .95rem/1.35 var(--sans);margin:0}
 .roles ul.b{margin-top:.3rem}
 
-/* ---------- Module: articles ---------- */
-.arts{list-style:none;margin:0;padding:0}
-.arts li{padding:1rem 0;border-bottom:1px solid var(--line)}
-.arts li:first-child{padding-top:0}
-.art-title{font:500 1.15rem/1.35 var(--serif);text-decoration:none}
+/* ---------- Module: cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.cb{padding:1.25rem 1.35rem}
+.cb p{margin:0 0 .6rem}
+
+/* ---------- Module: list and articles ---------- */
+.refs,.arts{list-style:none;margin:0;padding:0}
+.refs li{display:grid;grid-template-columns:4.5rem 1fr;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.refs li:first-child,.arts li:first-child{padding-top:0}
+.arts li{padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.art-title{font:500 1.25rem/1.35 var(--serif);text-decoration:none}
 a.art-title:hover{text-decoration:underline}
 .arts p{margin:.15rem 0 0}
 .art-meta{color:var(--muted);font-size:.9rem}
 .art-desc{font-size:.95rem}
 
-/* ---------- Module: cta (get in touch) ---------- */
-.cta{background:var(--ink);color:#e8f3f4;border-radius:10px;padding:clamp(1.5rem,4vw,2.5rem)}
-.cta p{font:400 1.35rem/1.45 var(--serif);color:#fff;max-width:34ch;margin-bottom:1.5rem}
-.cta .btns{display:flex;flex-wrap:wrap;gap:.75rem}
+/* ---------- Module: tags ---------- */
+.tg{margin-bottom:1.25rem}
+.tg h3{margin-bottom:.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;margin:0;padding:0}
+.tags li{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:.2rem .85rem;font-size:.9rem}
 
-/* ---------- Module: stats (headline numbers) ---------- */
-.stats{display:grid;grid-template-columns:repeat(var(--n,3),1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat{padding:1.6rem 1.25rem 1.5rem}
-.stat+.stat{border-left:1px solid var(--line)}
-.stat:first-child{padding-left:0}
-.stat b{display:block;font:500 clamp(2.4rem,4.5vw,3.5rem)/1 var(--serif);letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums}
-.stat span{display:block;margin-top:.55rem;color:var(--muted);font-size:.95rem;line-height:1.4;max-width:20ch}
-@media (max-width:560px){
-  .stats{grid-template-columns:1fr}
-  .stat,.stat:first-child{display:flex;align-items:baseline;gap:1rem;padding:1rem 0}
-  .stat+.stat{border-left:0;border-top:1px solid var(--line)}
-  .stat b{min-width:5.5rem;font-size:2.2rem}
-  .stat span{margin:0}
-}
+/* ---------- Module: cta (closing band) ---------- */
+.sec-cta{background:var(--navy);color:#fff}
+.sec-cta h2{color:#fff;font-size:clamp(2.8rem,8vw,6.5rem);max-width:11ch}
+.sec-cta h2::before{background:var(--aqua)}
+.sec-cta p{font:italic 400 clamp(1.3rem,2.4vw,1.8rem)/1.4 var(--serif);color:#d6ebee;max-width:32ch;margin-bottom:2rem}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem}
+
+footer{background:var(--navy);color:#8fb0b9;font-size:.9rem;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.1)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 1.5rem}
+footer a{color:#bcd7dc;margin-left:1.25rem}
 
 /* ---------- Responsive ---------- */
 @media (max-width:900px){
-  .layout{grid-template-columns:1fr}
-  aside{position:relative;height:auto;padding:2.75rem 1.5rem 2rem}
-  #nav{flex-direction:row;flex-wrap:wrap;gap:.25rem 1.1rem;margin-bottom:1.25rem}
-  #nav a::before{display:none}
-  main{padding-top:3rem}
+  .menu-btn{display:block}
+  #nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:.5rem clamp(1.25rem,4vw,3rem) 1rem;background:var(--navy)}
+  .top.open #nav{display:flex}
+  #nav a{padding:.8rem 0;border:0}
+  .hero{flex-direction:column;align-items:stretch;padding:0 0 3.5rem;min-height:0}
+  .hero .wrap{padding-top:2.5rem}
+  .hero-photo{position:relative;width:100%;height:min(75vw,420px);order:-1;margin-bottom:-2.5rem;-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent)}
+  .hero h1{font-size:clamp(3rem,15vw,5rem)}
+  .split:has(>figure){grid-template-columns:1fr}
+  .pic{aspect-ratio:4/3}
+  .stats{grid-template-columns:1fr}
+  .stat,.stat:first-child{display:flex;align-items:baseline;gap:1rem;padding:1.1rem 0;border-left:0}
+  .stat+.stat{border-top:1px solid rgba(255,255,255,.25)}
+  .stat b{min-width:6.5rem;font-size:3rem}
+  .stat span{margin:0}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -157,74 +173,76 @@ a.art-title:hover{text-decoration:underline}
   #contours path{stroke-dashoffset:0}
 }
 @media print{
-  .layout{display:block}
-  aside{position:static;height:auto;background:none;padding:0 0 1rem}
-  aside *{color:#000!important}
-  #contours,#nav{display:none}
-  main{padding:0}
-  section{break-inside:avoid;padding-bottom:1.5rem}
+  .top,#contours,.hero-photo,.btn{display:none}
+  .hero,.sec-stats,.sec-quote,.sec-cta{background:none!important;color:#000!important;min-height:0;padding:1rem 0}
+  .hero h1,.sub,.stat b,.stat span,blockquote,.sec-cta h2,.sec-cta p{color:#000!important}
 }
 </style>
 </head>
 <body>
-<div class="layout">
-  <aside>
-    <svg id="contours" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g></g></svg>
-    <header>
-      <div class="photo" id="photo"></div>
-      <h1 id="name"></h1>
-      <p class="role" id="role"></p>
-      <p class="role" id="role2"></p>
-    </header>
-    <div>
-      <nav id="nav" aria-label="Sections"></nav>
-      <div class="links" id="links"></div>
-    </div>
-  </aside>
-  <main>
-    <noscript><p>This CV needs JavaScript to display. Please enable it or view the profile on LinkedIn.</p></noscript>
-    <div id="content"></div>
-    <footer>&copy; <span id="yr"></span> <span id="foot"></span></footer>
-  </main>
-</div>
+<header class="top" id="top">
+  <a class="brand" href="#hero" id="brand"></a>
+  <nav id="nav" aria-label="Sections"></nav>
+  <div class="top-r"><a class="btn" id="cta-top"></a><button class="menu-btn" id="menu" aria-expanded="false">Menu</button></div>
+</header>
+
+<section class="hero" id="hero">
+  <svg id="contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g></g></svg>
+  <div class="hero-photo" id="hero-photo"></div>
+  <div class="wrap">
+    <span class="tag" id="tag"></span>
+    <h1 id="slogan"></h1>
+    <p class="sub" id="sub"></p>
+    <div class="hero-btns"><a class="btn" id="cta-hero"></a><a class="btn ghost" id="cta-2"></a></div>
+  </div>
+</section>
+
+<main id="content"><noscript><p class="wrap">This page needs JavaScript to display.</p></noscript></main>
+
+<footer><div class="wrap"><span>&copy; <span id="yr"></span> <span id="foot"></span></span><span id="flinks"></span></div></footer>
 
 <script>
 /* =====================================================================
-   1. YOUR CONTENT. Edit this block; the page builds itself from it.
-      Any text can include simple HTML such as <a href="...">link</a> or <em>italics</em>.
+   1. YOUR BRAND. Edit this block: name, slogan, hero photo, buttons.
+      Images go in the same folder as index.html. Hero photo: a well-lit portrait
+      with you on the right half works best (about 1600px wide or larger).
    ===================================================================== */
 const SITE = {
   name: "Liam Nichols",
-  role: "Grants and Partnerships Coordinator, Town of Ajax",
-  role2: "Chair, Whitby Public Library Board",
-  // Headshot: save a square photo (400px or larger) as headshot.jpg in the same folder as index.html.
-  // If the file is missing, initials show instead. Set photo: "" to always show initials.
-  photo: "headshot.jpg",
-  cta: { label: "Get in touch", href: "mailto:you@example.com" },   // button in the sidebar
-  links: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/liamnicholswhitby" }
-    // { label: "ORCID", href: "https://orcid.org/..." }
-  ]
+  tag: "Chair, Whitby Public Library Board",
+  slogan: "Partnerships that deliver for communities.",
+  sub: "Grants and Partnerships Coordinator, Town of Ajax. I help public institutions turn good ideas into funded, lasting results.",
+  hero: "hero.jpg",                                         // set to "" for no photo
+  cta:  { label: "Get in touch",   href: "mailto:you@example.com" },   // top bar, hero and closing band
+  cta2: { label: "See the record", href: "#experience" },
+  links: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/liamnicholswhitby" }]
 };
 
 /* =====================================================================
-   2. YOUR SECTIONS. Each object is one block on the page, in order.
-      To add a component: copy any object, change "type" and the content.
-      Types: text | timeline | cards | list | tags | stats | cta | articles   (see MODULES below)
+   2. YOUR SECTIONS, in order. Copy an entry to add a component.
+      Types: stats | text | pillars | quote | timeline | cards | list | articles | tags | cta
+      nav: "Label" sets the top-bar link; nav: false hides it. No title = no heading.
+      image: "file.jpg" works on text, cards and quote (a missing file shows a placeholder).
+      Any text can include simple HTML such as <a href="...">link</a> or <em>italics</em>.
    ===================================================================== */
 const SECTIONS = [
-  { id: "about", title: "About", type: "text", body: [
-      "Public administration professional working where municipal government, community institutions and funders meet. Replace this with two or three sentences in your own voice.",
-      "A second paragraph is optional. Use it for research interests, teaching, or what you are looking for next."
-  ]},
-  /* Headline numbers. Leave out "title" for a clean callout with no heading or nav link.
-     value counts up on scroll; optional: prefix, suffix, decimals (e.g. value: 1.5, decimals: 1). Use 2 to 4 items. */
   { id: "impact", type: "stats", items: [
       { value: 90, prefix: "$", suffix: "M", label: "in grant funding secured" },
       { value: 25, suffix: "+", label: "active community and institutional partnerships" },
       { value: 10, suffix: "+", label: "years in public service" }
   ]},
-  { id: "experience", title: "Experience", type: "timeline", items: [
+  { id: "about", title: "Meet Liam", nav: "About", type: "text", image: "about.jpg", body: [
+      "Public servant working where municipal government, community institutions and funders meet. Replace this with two or three sentences in your own voice.",
+      "A second paragraph is optional. Use it for what drives you, your research, or what you want to do next."
+  ]},
+  { id: "priorities", title: "What I stand for", nav: "Priorities", type: "pillars", items: [
+      { title: "Funding that delivers", text: "Secure the dollars, then make sure they reach residents. One or two sentences." },
+      { title: "Partnerships that last", text: "Agreements built on trust, shared goals and clear results." },
+      { title: "Libraries for everyone", text: "Public institutions that stay open, welcoming and relevant." }
+  ]},
+  { id: "quote", type: "quote", image: "quote.jpg",
+    text: "Public institutions work best when everyone has a seat at the table.", cite: "Liam Nichols" },
+  { id: "experience", title: "The record", nav: "Record", type: "timeline", items: [
       { title: "Grants and Partnerships Coordinator", org: "Town of Ajax", place: "Ajax, Ontario", when: "20XX – Present",
         bullets: [
           "Secure and manage external funding for municipal initiatives.",
@@ -234,33 +252,32 @@ const SECTIONS = [
       { title: "Previous role", org: "Organization", place: "City", when: "20XX – 20XX",
         bullets: ["One line on scope.", "One line on impact."] }
   ]},
-  { id: "service", title: "Volunteer Service", type: "cards", items: [
-      { title: "Whitby Public Library Board", meta: "20XX – Present (8 years)",
+  { id: "service", title: "Governance and service", nav: "Service", type: "cards", items: [
+      { title: "Whitby Public Library Board", meta: "20XX – Present (8 years)", image: "board.jpg",
         text: "Governance, strategic planning and community engagement for the library.",
         roles: [
           { title: "Chair", when: "20XX – Present", bullets: ["Lead the board and its work with the library CEO and Town Council."] },
-          { title: "Vice-Chair", when: "2024-2026", bullets: ["Acted as Chair in the absence of the Chair.","Provided advice and support to Chair and CEO as requested."]},
           { title: "Board member", when: "20XX – 20XX" }
         ] },
       { title: "Another board or committee", meta: "Role, years", text: "One sentence on your contribution.", href: "https://example.com", linkLabel: "Visit site" }
   ]},
-  { id: "education", title: "Education", type: "timeline", items: [
-      { title: "Degree name", org: "University", place: "City", when: "20XX", bullets: ["Thesis, honours or focus area."] },
-      { title: "Degree name", org: "University", place: "City", when: "20XX" }
-  ]},
-  { id: "scholarship", title: "Publications and talks", type: "list", items: [
-      { when: "2025", text: "Author. <em>Title of article or conference paper.</em> Journal or venue." },
-      { when: "2024", text: "Invited talk: <em>Title</em>. Event, city." }
-  ]},
-  { id: "articles", title: "Articles", type: "articles", items: [
+  { id: "articles", title: "In the news", nav: "Press", type: "articles", items: [
       { title: "Title of the article, op-ed or story", href: "https://example.com/article", author: "Author Name", source: "Publication", date: "2025", description: "One or two sentences on what it covers." },
       { title: "Another article", href: "https://example.com/another", source: "Publication", date: "2024" }
   ]},
-  { id: "skills", title: "Skills", type: "tags", groups: [
+  { id: "education", title: "Education", nav: false, type: "timeline", items: [
+      { title: "Degree name", org: "University", place: "City", when: "20XX", bullets: ["Thesis, honours or focus area."] },
+      { title: "Degree name", org: "University", place: "City", when: "20XX" }
+  ]},
+  { id: "scholarship", title: "Publications and talks", nav: false, type: "list", items: [
+      { when: "2025", text: "Author. <em>Title of article or conference paper.</em> Journal or venue." },
+      { when: "2024", text: "Invited talk: <em>Title</em>. Event, city." }
+  ]},
+  { id: "skills", title: "Skills", nav: false, type: "tags", groups: [
       { label: "Public affairs", tags: ["Policy analysis", "Stakeholder engagement", "Governance"] },
       { label: "Funding and partnerships", tags: ["Grant writing", "Agreements", "Public-private partnerships"] }
   ]},
-  { id: "contact", title: "Get in touch", type: "cta",
+  { id: "contact", title: "Let's work together", nav: false, type: "cta",
     text: "Open to conversations about grants, partnerships, public-sector governance and library leadership.",
     buttons: [
       { label: "Email me", href: "mailto:you@example.com", primary: true },
@@ -269,15 +286,21 @@ const SECTIONS = [
 ];
 
 /* =====================================================================
-   3. MODULES: one function per component type. Each receives a section
-      object and returns HTML. Add your own by adding a new key, then use
-      its name as "type" in SECTIONS. Style it in the CSS above.
+   3. MODULES: one function per component type, returning HTML.
+      Add your own by adding a key here, styling it above, and using it as "type".
    ===================================================================== */
-/* Several roles inside one organization: add  roles: [{ title, when, bullets }]  to a timeline or cards item */
+const $ = q => document.querySelector(q);
+const ext = h => /^https?:/.test(h) ? ' target="_blank" rel="noopener"' : "";
+const fmt = (n, dec) => n.toLocaleString("en-CA", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+const pic = (src, cls = "") => `<figure class="pic ${cls}"><img src="${src}" alt="" loading="lazy" onerror="this.parentNode.classList.add('ph');this.remove()"><figcaption>${src}</figcaption></figure>`;
 const rolesHtml = r => `<ul class="roles">${r.map(x => `<li><div class="row"><h4>${x.title}</h4><span class="when">${x.when || ""}</span></div>${x.bullets ? `<ul class="b">${x.bullets.map(b => `<li>${b}</li>`).join("")}</ul>` : ""}</li>`).join("")}</ul>`;
 
 const MODULES = {
-  text: s => s.body.map((p, i) => `<p${i ? "" : ' class="lead"'}>${p}</p>`).join(""),
+  text: s => `<div class="split">${s.image ? pic(s.image) : ""}<div>${s.body.map((p, i) => `<p${i ? "" : ' class="lead"'}>${p}</p>`).join("")}</div></div>`,
+
+  pillars: s => `<div class="pillars">${s.items.map(i => `<article><h3>${i.title}</h3><p>${i.text}</p></article>`).join("")}</div>`,
+
+  quote: s => `<blockquote>${s.text}</blockquote>${s.cite ? `<cite>${s.cite}</cite>` : ""}`,
 
   timeline: s => `<div class="tl"><span class="prog"></span><ol>${s.items.map(i => `
     <li><div class="row"><h3>${i.title}</h3><span class="when">${i.when || ""}</span></div>
@@ -285,68 +308,63 @@ const MODULES = {
     ${i.bullets ? `<ul class="b">${i.bullets.map(b => `<li>${b}</li>`).join("")}</ul>` : ""}${i.roles ? rolesHtml(i.roles) : ""}</li>`).join("")}</ol></div>`,
 
   cards: s => `<div class="cards">${s.items.map(i => `
-    <article class="card"><h3>${i.title}</h3>${i.meta ? `<p class="org">${i.meta}</p>` : ""}
-    ${i.text ? `<p>${i.text}</p>` : ""}${i.roles ? rolesHtml(i.roles) : ""}${i.href ? `<a href="${i.href}" target="_blank" rel="noopener">${i.linkLabel || "Learn more"}</a>` : ""}</article>`).join("")}</div>`,
+    <article class="card">${i.image ? pic(i.image, "wide") : ""}<div class="cb"><h3>${i.title}</h3>${i.meta ? `<p class="org">${i.meta}</p>` : ""}
+    ${i.text ? `<p>${i.text}</p>` : ""}${i.roles ? rolesHtml(i.roles) : ""}${i.href ? `<a href="${i.href}" target="_blank" rel="noopener">${i.linkLabel || "Learn more"}</a>` : ""}</div></article>`).join("")}</div>`,
 
   list: s => `<ul class="refs">${s.items.map(i => `<li><span class="when">${i.when || ""}</span><span>${i.text}</span></li>`).join("")}</ul>`,
-
-  tags: s => s.groups.map(g => `<div class="tg"><h3>${g.label}</h3><ul class="tags">${g.tags.map(t => `<li>${t}</li>`).join("")}</ul></div>`).join(""),
 
   articles: s => `<ul class="arts">${s.items.map(i => `<li>${i.href ? `<a class="art-title" href="${i.href}" target="_blank" rel="noopener">${i.title}</a>` : `<span class="art-title">${i.title}</span>`}
     <p class="art-meta">${[i.author, i.source, i.date].filter(Boolean).join(", ")}</p>${i.description ? `<p class="art-desc">${i.description}</p>` : ""}</li>`).join("")}</ul>`,
 
-  cta: s => `<div class="cta"><p>${s.text}</p><div class="btns">${s.buttons.map(b => `<a class="btn${b.primary ? "" : " alt"}" href="${b.href}"${ext(b.href)}>${b.label}</a>`).join("")}</div></div>`,
+  tags: s => s.groups.map(g => `<div class="tg"><h3>${g.label}</h3><ul class="tags">${g.tags.map(t => `<li>${t}</li>`).join("")}</ul></div>`).join(""),
 
   stats: s => `<div class="stats" style="--n:${s.items.length}">${s.items.map(i => {
     const dec = i.decimals || 0, pre = i.prefix || "", suf = i.suffix || "";
     return `<div class="stat"><b data-to="${i.value}" data-dec="${dec}" data-pre="${pre}" data-suf="${suf}">${pre}${fmt(i.value, dec)}${suf}</b><span>${i.label}</span></div>`;
-  }).join("")}</div>`
+  }).join("")}</div>`,
+
+  cta: s => `<p>${s.text}</p><div class="btns">${s.buttons.map(b => `<a class="btn${b.primary ? "" : " ghost"}" href="${b.href}"${ext(b.href)}>${b.label}</a>`).join("")}</div>`
 };
 
 /* =====================================================================
    4. BUILD THE PAGE (you shouldn't need to edit below this line)
    ===================================================================== */
-const $ = q => document.querySelector(q);
-const ext = h => /^https?:/.test(h) ? ' target="_blank" rel="noopener"' : "";
-const fmt = (n, dec) => n.toLocaleString("en-CA", { minimumFractionDigits: dec, maximumFractionDigits: dec });
-
-$("#name").textContent = SITE.name;
-$("#role").textContent = SITE.role || "";
-$("#role2").textContent = SITE.role2 || "";
-$("#links").innerHTML = (SITE.cta ? `<a class="btn" href="${SITE.cta.href}"${ext(SITE.cta.href)}>${SITE.cta.label}</a>` : "")
-  + SITE.links.map(l => `<a href="${l.href}"${ext(l.href)}>${l.label}</a>`).join("");
-
-/* Headshot, with an initials fallback if the image file is missing */
-const ph = $("#photo");
-const mono = () => { ph.className = "photo empty"; ph.textContent = SITE.name.split(" ").map(w => w[0]).join("").slice(0, 2); };
-if (SITE.photo) {
-  const img = new Image();
-  img.alt = "Portrait of " + SITE.name;
-  img.width = img.height = 104;
-  img.onerror = mono;
-  img.src = SITE.photo;
-  ph.append(img);
-} else mono();
+const btn = (el, c) => { $(el).textContent = c.label; $(el).href = c.href; };
+$("#brand").textContent = SITE.name;
+$("#tag").textContent = SITE.tag;
+$("#slogan").textContent = SITE.slogan;
+$("#sub").textContent = SITE.sub;
+btn("#cta-top", SITE.cta); btn("#cta-hero", SITE.cta); btn("#cta-2", SITE.cta2);
+if (SITE.hero) $("#hero-photo").innerHTML = `<img src="${SITE.hero}" alt="${SITE.name}" onerror="this.parentNode.remove()">`;
+else $("#hero-photo").remove();
 $("#foot").textContent = SITE.name;
 $("#yr").textContent = new Date().getFullYear();
-$("#nav").innerHTML = SECTIONS.filter(s => s.title).map(s => `<a href="#${s.id}">${s.title}</a>`).join("");
+$("#flinks").innerHTML = SITE.links.map(l => `<a href="${l.href}"${ext(l.href)}>${l.label}</a>`).join("");
+
+const label = s => s.nav === undefined ? s.title : s.nav;
+$("#nav").innerHTML = SECTIONS.filter(label).map(s => `<a href="#${s.id}">${label(s)}</a>`).join("");
 $("#content").innerHTML = SECTIONS.map(s => {
   const m = MODULES[s.type];
   if (!m) { console.warn("Unknown module type:", s.type); return ""; }
-  return `<section id="${s.id}">${s.title ? `<h2>${s.title}</h2>` : ""}${m(s)}</section>`;
+  const bg = s.type === "quote" && s.image ? ` style="background-image:url('${s.image}')"` : "";
+  return `<section id="${s.id}" class="sec sec-${s.type}"${bg}><div class="wrap">${s.title ? `<h2>${s.title}</h2>` : ""}${m(s)}</div></section>`;
 }).join("");
 
-/* Contour lines in the sidebar */
+/* Hero contour lines */
 let d = "";
-for (let i = 0; i < 14; i++) {
+for (let i = 0; i < 16; i++) {
   let p = "";
-  for (let x = -10; x <= 410; x += 10) {
-    const y = 80 + i * 52 + 22 * Math.sin(x / 58 + i * .45) + 14 * Math.sin(x / 23 - i * .3);
+  for (let x = -20; x <= 1460; x += 20) {
+    const y = 40 + i * 50 + 30 * Math.sin(x / 140 + i * .45) + 16 * Math.sin(x / 52 - i * .3);
     p += (x < 0 ? "M" : "L") + x + " " + y.toFixed(1);
   }
   d += `<path d="${p}" pathLength="1" style="--i:${i}"/>`;
 }
 $("#contours g").innerHTML = d;
+
+/* Mobile menu */
+$("#menu").onclick = () => $("#menu").setAttribute("aria-expanded", $("#top").classList.toggle("open"));
+$("#nav").onclick = e => { if (e.target.tagName === "A") { $("#top").classList.remove("open"); $("#menu").setAttribute("aria-expanded", "false"); } };
 
 /* Highlight the current section in the nav */
 const links = [...document.querySelectorAll("#nav a")];
