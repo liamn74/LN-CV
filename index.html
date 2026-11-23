@@ -113,15 +113,15 @@ ul.b li::marker{color:var(--accent)}
 .roles h4{font:600 .95rem/1.35 var(--sans);margin:0}
 .roles ul.b{margin-top:.3rem}
 
-/* ---------- Module: links (auto-filled from links.json) ---------- */
-.lk-list{list-style:none;margin:0;padding:0}
-.lk-list li{padding:1rem 0;border-bottom:1px solid var(--line)}
-.lk-list li:first-child{padding-top:0}
-.lk-title{font:500 1.15rem/1.35 var(--serif);text-decoration:none}
-.lk-title:hover{text-decoration:underline}
-.lk-list p{margin:.15rem 0 0}
-.lk-meta{color:var(--muted);font-size:.9rem}
-.lk-desc{font-size:.95rem}
+/* ---------- Module: articles ---------- */
+.arts{list-style:none;margin:0;padding:0}
+.arts li{padding:1rem 0;border-bottom:1px solid var(--line)}
+.arts li:first-child{padding-top:0}
+.art-title{font:500 1.15rem/1.35 var(--serif);text-decoration:none}
+a.art-title:hover{text-decoration:underline}
+.arts p{margin:.15rem 0 0}
+.art-meta{color:var(--muted);font-size:.9rem}
+.art-desc{font-size:.95rem}
 
 /* ---------- Module: cta (get in touch) ---------- */
 .cta{background:var(--ink);color:#e8f3f4;border-radius:10px;padding:clamp(1.5rem,4vw,2.5rem)}
@@ -210,7 +210,7 @@ const SITE = {
 /* =====================================================================
    2. YOUR SECTIONS. Each object is one block on the page, in order.
       To add a component: copy any object, change "type" and the content.
-      Types: text | timeline | cards | list | tags | stats | cta | links   (see MODULES below)
+      Types: text | timeline | cards | list | tags | stats | cta | articles   (see MODULES below)
    ===================================================================== */
 const SECTIONS = [
   { id: "about", title: "About", type: "text", body: [
@@ -251,9 +251,9 @@ const SECTIONS = [
       { when: "2025", text: "Author. <em>Title of article or conference paper.</em> Journal or venue." },
       { when: "2024", text: "Invited talk: <em>Title</em>. Event, city." }
   ]},
-  /* Auto-filled from links.json (see fetch_links.py). The items below show only until that file exists. */
-  { id: "links", title: "Selected links", type: "links", src: "links.json", items: [
-      { url: "https://example.com/article", title: "Title of an article, op-ed or news story", author: "Author Name", source: "Publication", date: "2025-01-15", description: "One or two sentences from the page's own description." }
+  { id: "articles", title: "Articles", type: "articles", items: [
+      { title: "Title of the article, op-ed or story", href: "https://example.com/article", author: "Author Name", source: "Publication", date: "2025", description: "One or two sentences on what it covers." },
+      { title: "Another article", href: "https://example.com/another", source: "Publication", date: "2024" }
   ]},
   { id: "skills", title: "Skills", type: "tags", groups: [
       { label: "Public affairs", tags: ["Policy analysis", "Stakeholder engagement", "Governance"] },
@@ -272,16 +272,8 @@ const SECTIONS = [
       object and returns HTML. Add your own by adding a new key, then use
       its name as "type" in SECTIONS. Style it in the CSS above.
    ===================================================================== */
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-
 /* Several roles inside one organization: add  roles: [{ title, when, bullets }]  to a timeline or cards item */
 const rolesHtml = r => `<ul class="roles">${r.map(x => `<li><div class="row"><h4>${x.title}</h4><span class="when">${x.when || ""}</span></div>${x.bullets ? `<ul class="b">${x.bullets.map(b => `<li>${b}</li>`).join("")}</ul>` : ""}</li>`).join("")}</ul>`;
-
-/* Link cards: scraped text is escaped, and only http(s) links are used */
-const linkList = d => `<ul class="lk-list">${d.filter(i => /^https?:/.test(i.url)).map(i => `<li>
-  <a class="lk-title" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title || i.url)}</a>
-  <p class="lk-meta">${[i.author, i.source, i.date].filter(Boolean).map(esc).join(", ")}</p>
-  ${i.description ? `<p class="lk-desc">${esc(i.description)}</p>` : ""}</li>`).join("")}</ul>`;
 
 const MODULES = {
   text: s => s.body.map((p, i) => `<p${i ? "" : ' class="lead"'}>${p}</p>`).join(""),
@@ -299,7 +291,8 @@ const MODULES = {
 
   tags: s => s.groups.map(g => `<div class="tg"><h3>${g.label}</h3><ul class="tags">${g.tags.map(t => `<li>${t}</li>`).join("")}</ul></div>`).join(""),
 
-  links: s => `<div class="lk"></div>`,   // filled by the loader below from links.json (or s.items as a fallback)
+  articles: s => `<ul class="arts">${s.items.map(i => `<li>${i.href ? `<a class="art-title" href="${i.href}" target="_blank" rel="noopener">${i.title}</a>` : `<span class="art-title">${i.title}</span>`}
+    <p class="art-meta">${[i.author, i.source, i.date].filter(Boolean).join(", ")}</p>${i.description ? `<p class="art-desc">${i.description}</p>` : ""}</li>`).join("")}</ul>`,
 
   cta: s => `<div class="cta"><p>${s.text}</p><div class="btns">${s.buttons.map(b => `<a class="btn${b.primary ? "" : " alt"}" href="${b.href}"${ext(b.href)}>${b.label}</a>`).join("")}</div></div>`,
 
@@ -341,13 +334,6 @@ $("#content").innerHTML = SECTIONS.map(s => {
   if (!m) { console.warn("Unknown module type:", s.type); return ""; }
   return `<section id="${s.id}">${s.title ? `<h2>${s.title}</h2>` : ""}${m(s)}</section>`;
 }).join("");
-
-/* Fill "links" sections from links.json; fall back to the inline items if the file is missing */
-SECTIONS.filter(s => s.type === "links").forEach(s => {
-  const el = document.querySelector(`#${s.id} .lk`), show = d => { el.innerHTML = linkList(d); };
-  if (!s.src) return show(s.items || []);
-  fetch(s.src).then(r => r.ok ? r.json() : Promise.reject()).then(d => show(d.length ? d : s.items || [])).catch(() => show(s.items || []));
-});
 
 /* Contour lines in the sidebar */
 let d = "";
