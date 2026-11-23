@@ -1,0 +1,21 @@
+name: Update links
+
+on:
+  push:
+    paths: [links.txt]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 fetch_links.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add links.json
+          git diff --cached --quiet || (git commit -m "Update links.json" && git push)

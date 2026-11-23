@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liam Nichols – CV</title>
+<meta name="description" content="Online CV: public administration, community partnerships and library governance.">
+<meta name="theme-color" content="#0b2a3c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+/* ---------- Theme: edit these colours to restyle the whole site ---------- */
+:root{
+  --ink:#0b2a3c;      /* sidebar: deep navy-teal */
+  --accent:#12616f;   /* headings, links, timeline */
+  --paper:#f6f9f9; --surface:#fff; --text:#16303d; --muted:#567480; --line:#cfdfe2;
+  --serif:"Newsreader",Georgia,serif; --sans:"Instrument Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--accent:#7cc9d1;--paper:#08171f;--surface:#0e2230;--text:#dbe9ec;--muted:#8fb0b9;--line:#1d3a47}
+}
+*,::before,::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--text);font:400 1rem/1.65 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ---------- Layout ---------- */
+.layout{display:grid;grid-template-columns:minmax(300px,380px) 1fr;min-height:100vh}
+aside{position:sticky;top:0;height:100vh;padding:3.5rem 2.5rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:2rem;color:#e8f3f4;background:var(--ink);overflow:hidden;isolation:isolate}
+aside a{color:#bfe0e4}
+aside a:focus-visible{outline-color:#7cc9d1}
+h1{font:500 clamp(2.4rem,4vw,3.2rem)/1.05 var(--serif);letter-spacing:-.01em;margin:0 0 .9rem;color:#fff}
+.role{margin:0;font-size:1.05rem;color:#d3e9ec}
+.role+.role{color:#9cc3ca;margin-top:.15rem}
+#nav{display:flex;flex-direction:column;gap:.1rem;margin-bottom:1.5rem}
+#nav a{display:flex;align-items:center;padding:.25rem 0;color:#9cc3ca;text-decoration:none;transition:color .2s}
+#nav a::before{content:"";width:0;height:1px;background:#7cc9d1;margin-right:0;transition:width .3s,margin .3s}
+#nav a:hover,#nav a.on{color:#fff}
+#nav a.on::before{width:1.5rem;margin-right:.65rem}
+.links{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.95rem}
+main{padding:4.5rem clamp(1.5rem,6vw,5rem) 3rem;max-width:62rem}
+section{padding-bottom:3.75rem;scroll-margin-top:2rem}
+h2{display:flex;align-items:center;gap:1rem;font:500 1.8rem/1.2 var(--serif);margin:0 0 1.5rem}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+h3{font:600 1.05rem/1.35 var(--sans);margin:0}
+p{margin:0 0 1rem;max-width:65ch}
+.lead{font:400 1.3rem/1.55 var(--serif)}
+footer{color:var(--muted);font-size:.85rem}
+
+/* ---------- Contour lines (the one decorative moment) ---------- */
+#contours{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+#contours path{fill:none;stroke:#5fb7c2;stroke-opacity:.3;stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s cubic-bezier(.3,.6,.2,1) forwards;animation-delay:calc(var(--i)*.12s)}
+#contours g{animation:sway 20s ease-in-out infinite alternate}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes sway{to{transform:translateY(-16px)}}
+
+/* ---------- Module: timeline ---------- */
+.tl{position:relative}
+.tl::before,.tl .prog{content:"";position:absolute;left:5px;top:.6rem;bottom:.6rem;width:2px;background:var(--line)}
+.tl .prog{bottom:auto;height:0;background:var(--accent)}
+.tl ol{list-style:none;margin:0;padding:0 0 0 1.75rem}
+.tl ol>li{position:relative;padding-bottom:2rem}
+.tl ol>li:last-child{padding-bottom:0}
+.tl ol>li::before{content:"";position:absolute;left:-1.75rem;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--line);transition:background .3s,border-color .3s}
+.tl ol>li.on::before{background:var(--accent);border-color:var(--accent)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:.25rem 1rem;flex-wrap:wrap}
+.when{color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums}
+.org{color:var(--accent);font-weight:500;margin:.1rem 0 .6rem}
+ul.b{margin:0;padding-left:1.1rem;max-width:65ch}
+ul.b li{margin-bottom:.3rem}
+ul.b li::marker{color:var(--accent)}
+
+/* ---------- Module: cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.25rem 1.35rem;transition:border-color .2s}
+.card:hover{border-color:var(--accent)}
+.card p{margin:0 0 .6rem}
+.card .org{margin:.1rem 0 .6rem}
+
+/* ---------- Module: list (publications, talks, awards) ---------- */
+.refs{list-style:none;margin:0;padding:0}
+.refs li{display:grid;grid-template-columns:4.5rem 1fr;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.refs li:first-child{padding-top:0}
+
+/* ---------- Module: tags (skills) ---------- */
+.tg{margin-bottom:1.25rem}
+.tg h3{margin-bottom:.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;margin:0;padding:0}
+.tags li{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:.15rem .8rem;font-size:.9rem}
+
+/* ---------- Headshot and buttons ---------- */
+.photo{width:104px;height:104px;margin-bottom:1.4rem;border-radius:50%;overflow:hidden;display:grid;place-items:center;box-shadow:0 0 0 2px var(--ink),0 0 0 3px rgba(124,201,209,.55)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo.empty{box-shadow:none;border:1.5px dashed rgba(124,201,209,.55);background:rgba(255,255,255,.06);font:500 1.9rem var(--serif);color:#bfe0e4}
+.btn{display:inline-block;padding:.55rem 1.2rem;border-radius:99px;font-weight:600;font-size:.95rem;text-decoration:none;background:#7cc9d1;color:var(--ink);transition:background .2s}
+.btn:hover{background:#a3dce2}
+.btn.alt{background:none;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.btn.alt:hover{background:rgba(255,255,255,.1)}
+.links{align-items:center}
+@media (min-width:901px) and (max-height:780px){
+  .photo{width:76px;height:76px;margin-bottom:1rem}
+  .photo.empty{font-size:1.5rem}
+  aside{padding-top:2.25rem;padding-bottom:1.75rem}
+  h1{font-size:2.4rem}
+}
+@media (max-width:900px){.photo{width:88px;height:88px}}
+
+/* ---------- Nested roles (several roles inside one organization) ---------- */
+.roles{list-style:none;margin:.5rem 0 .75rem;padding:0 0 0 1rem;border-left:2px solid var(--line)}
+.roles>li{padding:.3rem 0}
+.roles h4{font:600 .95rem/1.35 var(--sans);margin:0}
+.roles ul.b{margin-top:.3rem}
+
+/* ---------- Module: links (auto-filled from links.json) ---------- */
+.lk-list{list-style:none;margin:0;padding:0}
+.lk-list li{padding:1rem 0;border-bottom:1px solid var(--line)}
+.lk-list li:first-child{padding-top:0}
+.lk-title{font:500 1.15rem/1.35 var(--serif);text-decoration:none}
+.lk-title:hover{text-decoration:underline}
+.lk-list p{margin:.15rem 0 0}
+.lk-meta{color:var(--muted);font-size:.9rem}
+.lk-desc{font-size:.95rem}
+
+/* ---------- Module: cta (get in touch) ---------- */
+.cta{background:var(--ink);color:#e8f3f4;border-radius:10px;padding:clamp(1.5rem,4vw,2.5rem)}
+.cta p{font:400 1.35rem/1.45 var(--serif);color:#fff;max-width:34ch;margin-bottom:1.5rem}
+.cta .btns{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* ---------- Module: stats (headline numbers) ---------- */
+.stats{display:grid;grid-template-columns:repeat(var(--n,3),1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:1.6rem 1.25rem 1.5rem}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat:first-child{padding-left:0}
+.stat b{display:block;font:500 clamp(2.4rem,4.5vw,3.5rem)/1 var(--serif);letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:.55rem;color:var(--muted);font-size:.95rem;line-height:1.4;max-width:20ch}
+@media (max-width:560px){
+  .stats{grid-template-columns:1fr}
+  .stat,.stat:first-child{display:flex;align-items:baseline;gap:1rem;padding:1rem 0}
+  .stat+.stat{border-left:0;border-top:1px solid var(--line)}
+  .stat b{min-width:5.5rem;font-size:2.2rem}
+  .stat span{margin:0}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  aside{position:relative;height:auto;padding:2.75rem 1.5rem 2rem}
+  #nav{flex-direction:row;flex-wrap:wrap;gap:.25rem 1.1rem;margin-bottom:1.25rem}
+  #nav a::before{display:none}
+  main{padding-top:3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,::before,::after{animation:none!important;transition:none!important}
+  #contours path{stroke-dashoffset:0}
+}
+@media print{
+  .layout{display:block}
+  aside{position:static;height:auto;background:none;padding:0 0 1rem}
+  aside *{color:#000!important}
+  #contours,#nav{display:none}
+  main{padding:0}
+  section{break-inside:avoid;padding-bottom:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <svg id="contours" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g></g></svg>
+    <header>
+      <div class="photo" id="photo"></div>
+      <h1 id="name"></h1>
+      <p class="role" id="role"></p>
+      <p class="role" id="role2"></p>
+    </header>
+    <div>
+      <nav id="nav" aria-label="Sections"></nav>
+      <div class="links" id="links"></div>
+    </div>
+  </aside>
+  <main>
+    <noscript><p>This CV needs JavaScript to display. Please enable it or view the profile on LinkedIn.</p></noscript>
+    <div id="content"></div>
+    <footer>&copy; <span id="yr"></span> <span id="foot"></span></footer>
+  </main>
+</div>
+
+<script>
+/* =====================================================================
+   1. YOUR CONTENT. Edit this block; the page builds itself from it.
+      Any text can include simple HTML such as <a href="...">link</a> or <em>italics</em>.
+   ===================================================================== */
+const SITE = {
+  name: "Liam Nichols",
+  role: "Grants and Partnerships Coordinator, Town of Ajax",
+  role2: "Chair, Whitby Public Library Board",
+  // Headshot: save a square photo (400px or larger) as headshot.jpg in the same folder as index.html.
+  // If the file is missing, initials show instead. Set photo: "" to always show initials.
+  photo: "headshot.jpg",
+  cta: { label: "Get in touch", href: "mailto:you@example.com" },   // button in the sidebar
+  links: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/liamnicholswhitby" }
+    // { label: "ORCID", href: "https://orcid.org/..." }
+  ]
+};
+
+/* =====================================================================
+   2. YOUR SECTIONS. Each object is one block on the page, in order.
+      To add a component: copy any object, change "type" and the content.
+      Types: text | timeline | cards | list | tags | stats | cta | links   (see MODULES below)
+   ===================================================================== */
+const SECTIONS = [
+  { id: "about", title: "About", type: "text", body: [
+      "Public administration professional working where municipal government, community institutions and funders meet. Replace this with two or three sentences in your own voice.",
+      "A second paragraph is optional. Use it for research interests, teaching, or what you are looking for next."
+  ]},
+  /* Headline numbers. Leave out "title" for a clean callout with no heading or nav link.
+     value counts up on scroll; optional: prefix, suffix, decimals (e.g. value: 1.5, decimals: 1). Use 2 to 4 items. */
+  { id: "impact", type: "stats", items: [
+      { value: 90, prefix: "$", suffix: "M", label: "in grant funding secured" },
+      { value: 25, suffix: "+", label: "active community and institutional partnerships" },
+      { value: 10, suffix: "+", label: "years in public service" }
+  ]},
+  { id: "experience", title: "Experience", type: "timeline", items: [
+      { title: "Grants and Partnerships Coordinator", org: "Town of Ajax", place: "Ajax, Ontario", when: "20XX – Present",
+        bullets: [
+          "Secure and manage external funding for municipal initiatives.",
+          "Develop and sustain agreements with community and institutional partners.",
+          "Add a result with a number: what you led, the scale, the outcome."
+        ]},
+      { title: "Previous role", org: "Organization", place: "City", when: "20XX – 20XX",
+        bullets: ["One line on scope.", "One line on impact."] }
+  ]},
+  { id: "service", title: "Governance and service", type: "cards", items: [
+      { title: "Whitby Public Library Board", meta: "20XX – Present (8 years)",
+        text: "Governance, strategic planning and community engagement for the library.",
+        roles: [
+          { title: "Chair", when: "20XX – Present", bullets: ["Lead the board and its work with the library CEO and Town Council."] },
+          { title: "Board member", when: "20XX – 20XX" }
+        ] },
+      { title: "Another board or committee", meta: "Role, years", text: "One sentence on your contribution.", href: "https://example.com", linkLabel: "Visit site" }
+  ]},
+  { id: "education", title: "Education", type: "timeline", items: [
+      { title: "Degree name", org: "University", place: "City", when: "20XX", bullets: ["Thesis, honours or focus area."] },
+      { title: "Degree name", org: "University", place: "City", when: "20XX" }
+  ]},
+  { id: "scholarship", title: "Publications and talks", type: "list", items: [
+      { when: "2025", text: "Author. <em>Title of article or conference paper.</em> Journal or venue." },
+      { when: "2024", text: "Invited talk: <em>Title</em>. Event, city." }
+  ]},
+  /* Auto-filled from links.json (see fetch_links.py). The items below show only until that file exists. */
+  { id: "links", title: "Selected links", type: "links", src: "links.json", items: [
+      { url: "https://example.com/article", title: "Title of an article, op-ed or news story", author: "Author Name", source: "Publication", date: "2025-01-15", description: "One or two sentences from the page's own description." }
+  ]},
+  { id: "skills", title: "Skills", type: "tags", groups: [
+      { label: "Public affairs", tags: ["Policy analysis", "Stakeholder engagement", "Governance"] },
+      { label: "Funding and partnerships", tags: ["Grant writing", "Agreements", "Public-private partnerships"] }
+  ]},
+  { id: "contact", title: "Get in touch", type: "cta",
+    text: "Open to conversations about grants, partnerships, public-sector governance and library leadership.",
+    buttons: [
+      { label: "Email me", href: "mailto:you@example.com", primary: true },
+      { label: "Connect on LinkedIn", href: "https://www.linkedin.com/in/liamnicholswhitby" }
+    ]}
+];
+
+/* =====================================================================
+   3. MODULES: one function per component type. Each receives a section
+      object and returns HTML. Add your own by adding a new key, then use
+      its name as "type" in SECTIONS. Style it in the CSS above.
+   ===================================================================== */
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+/* Several roles inside one organization: add  roles: [{ title, when, bullets }]  to a timeline or cards item */
+const rolesHtml = r => `<ul class="roles">${r.map(x => `<li><div class="row"><h4>${x.title}</h4><span class="when">${x.when || ""}</span></div>${x.bullets ? `<ul class="b">${x.bullets.map(b => `<li>${b}</li>`).join("")}</ul>` : ""}</li>`).join("")}</ul>`;
+
+/* Link cards: scraped text is escaped, and only http(s) links are used */
+const linkList = d => `<ul class="lk-list">${d.filter(i => /^https?:/.test(i.url)).map(i => `<li>
+  <a class="lk-title" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title || i.url)}</a>
+  <p class="lk-meta">${[i.author, i.source, i.date].filter(Boolean).map(esc).join(", ")}</p>
+  ${i.description ? `<p class="lk-desc">${esc(i.description)}</p>` : ""}</li>`).join("")}</ul>`;
+
+const MODULES = {
+  text: s => s.body.map((p, i) => `<p${i ? "" : ' class="lead"'}>${p}</p>`).join(""),
+
+  timeline: s => `<div class="tl"><span class="prog"></span><ol>${s.items.map(i => `
+    <li><div class="row"><h3>${i.title}</h3><span class="when">${i.when || ""}</span></div>
+    <p class="org">${[i.org, i.place].filter(Boolean).join(", ")}</p>
+    ${i.bullets ? `<ul class="b">${i.bullets.map(b => `<li>${b}</li>`).join("")}</ul>` : ""}${i.roles ? rolesHtml(i.roles) : ""}</li>`).join("")}</ol></div>`,
+
+  cards: s => `<div class="cards">${s.items.map(i => `
+    <article class="card"><h3>${i.title}</h3>${i.meta ? `<p class="org">${i.meta}</p>` : ""}
+    ${i.text ? `<p>${i.text}</p>` : ""}${i.roles ? rolesHtml(i.roles) : ""}${i.href ? `<a href="${i.href}" target="_blank" rel="noopener">${i.linkLabel || "Learn more"}</a>` : ""}</article>`).join("")}</div>`,
+
+  list: s => `<ul class="refs">${s.items.map(i => `<li><span class="when">${i.when || ""}</span><span>${i.text}</span></li>`).join("")}</ul>`,
+
+  tags: s => s.groups.map(g => `<div class="tg"><h3>${g.label}</h3><ul class="tags">${g.tags.map(t => `<li>${t}</li>`).join("")}</ul></div>`).join(""),
+
+  links: s => `<div class="lk"></div>`,   // filled by the loader below from links.json (or s.items as a fallback)
+
+  cta: s => `<div class="cta"><p>${s.text}</p><div class="btns">${s.buttons.map(b => `<a class="btn${b.primary ? "" : " alt"}" href="${b.href}"${ext(b.href)}>${b.label}</a>`).join("")}</div></div>`,
+
+  stats: s => `<div class="stats" style="--n:${s.items.length}">${s.items.map(i => {
+    const dec = i.decimals || 0, pre = i.prefix || "", suf = i.suffix || "";
+    return `<div class="stat"><b data-to="${i.value}" data-dec="${dec}" data-pre="${pre}" data-suf="${suf}">${pre}${fmt(i.value, dec)}${suf}</b><span>${i.label}</span></div>`;
+  }).join("")}</div>`
+};
+
+/* =====================================================================
+   4. BUILD THE PAGE (you shouldn't need to edit below this line)
+   ===================================================================== */
+const $ = q => document.querySelector(q);
+const ext = h => /^https?:/.test(h) ? ' target="_blank" rel="noopener"' : "";
+const fmt = (n, dec) => n.toLocaleString("en-CA", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+
+$("#name").textContent = SITE.name;
+$("#role").textContent = SITE.role || "";
+$("#role2").textContent = SITE.role2 || "";
+$("#links").innerHTML = (SITE.cta ? `<a class="btn" href="${SITE.cta.href}"${ext(SITE.cta.href)}>${SITE.cta.label}</a>` : "")
+  + SITE.links.map(l => `<a href="${l.href}"${ext(l.href)}>${l.label}</a>`).join("");
+
+/* Headshot, with an initials fallback if the image file is missing */
+const ph = $("#photo");
+const mono = () => { ph.className = "photo empty"; ph.textContent = SITE.name.split(" ").map(w => w[0]).join("").slice(0, 2); };
+if (SITE.photo) {
+  const img = new Image();
+  img.alt = "Portrait of " + SITE.name;
+  img.width = img.height = 104;
+  img.onerror = mono;
+  img.src = SITE.photo;
+  ph.append(img);
+} else mono();
+$("#foot").textContent = SITE.name;
+$("#yr").textContent = new Date().getFullYear();
+$("#nav").innerHTML = SECTIONS.filter(s => s.title).map(s => `<a href="#${s.id}">${s.title}</a>`).join("");
+$("#content").innerHTML = SECTIONS.map(s => {
+  const m = MODULES[s.type];
+  if (!m) { console.warn("Unknown module type:", s.type); return ""; }
+  return `<section id="${s.id}">${s.title ? `<h2>${s.title}</h2>` : ""}${m(s)}</section>`;
+}).join("");
+
+/* Fill "links" sections from links.json; fall back to the inline items if the file is missing */
+SECTIONS.filter(s => s.type === "links").forEach(s => {
+  const el = document.querySelector(`#${s.id} .lk`), show = d => { el.innerHTML = linkList(d); };
+  if (!s.src) return show(s.items || []);
+  fetch(s.src).then(r => r.ok ? r.json() : Promise.reject()).then(d => show(d.length ? d : s.items || [])).catch(() => show(s.items || []));
+});
+
+/* Contour lines in the sidebar */
+let d = "";
+for (let i = 0; i < 14; i++) {
+  let p = "";
+  for (let x = -10; x <= 410; x += 10) {
+    const y = 80 + i * 52 + 22 * Math.sin(x / 58 + i * .45) + 14 * Math.sin(x / 23 - i * .3);
+    p += (x < 0 ? "M" : "L") + x + " " + y.toFixed(1);
+  }
+  d += `<path d="${p}" pathLength="1" style="--i:${i}"/>`;
+}
+$("#contours g").innerHTML = d;
+
+/* Highlight the current section in the nav */
+const links = [...document.querySelectorAll("#nav a")];
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) links.forEach(l => l.classList.toggle("on", l.hash === "#" + e.target.id));
+}), { rootMargin: "-35% 0px -60% 0px" });
+document.querySelectorAll("section").forEach(s => io.observe(s));
+
+/* Timeline fills as you scroll */
+const tls = [...document.querySelectorAll(".tl")];
+const update = () => {
+  const y = innerHeight * .6;
+  tls.forEach(t => {
+    const r = t.getBoundingClientRect();
+    t.querySelector(".prog").style.height = Math.min(1, Math.max(0, (y - r.top) / r.height)) * 100 + "%";
+    t.querySelectorAll("ol>li").forEach(li => li.classList.toggle("on", li.getBoundingClientRect().top < y));
+  });
+};
+let raf;
+addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
+addEventListener("resize", update);
+update();
+
+/* Stats count up once when scrolled into view (skipped if reduced motion is on) */
+if (!matchMedia("(prefers-reduced-motion:reduce)").matches) {
+  const countIO = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    countIO.unobserve(e.target);
+    const el = e.target, to = +el.dataset.to, dec = +el.dataset.dec, t0 = performance.now(), dur = 1400;
+    const tick = now => {
+      const p = Math.min(1, (now - t0) / dur), v = to * (1 - Math.pow(1 - p, 3));
+      el.textContent = el.dataset.pre + fmt(v, dec) + el.dataset.suf;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }), { threshold: .6 });
+  document.querySelectorAll(".stat b").forEach(b => {
+    b.textContent = b.dataset.pre + fmt(0, +b.dataset.dec) + b.dataset.suf;
+    countIO.observe(b);
+  });
+}
+</script>
+</body>
+</html>

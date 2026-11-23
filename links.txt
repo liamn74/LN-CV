@@ -1,0 +1,7 @@
+# One link per line. Lines starting with # are ignored.
+# The page title, author, source and description are read from each page automatically.
+# If a site hides or gets something wrong, override it after the URL with  | key=value
+# (keys: title, author, source, date, description).
+#
+# https://example.com/my-article
+# https://example.com/news-story | author=Jane Doe
